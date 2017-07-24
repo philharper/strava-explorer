@@ -1,2 +1,5 @@
-uk/co/philharper/SpringBootWebApplication.class
-uk/co/philharper/WelcomeController.class
+uk/co/philharper/services/ActivityService.class
+uk/co/philharper/application/SpringBootWebApplication.class
+uk/co/philharper/controllers/WelcomeController.class
+uk/co/philharper/facades/impl/DefaultActivityFacade.class
+uk/co/philharper/facades/ActivityFacade.class
