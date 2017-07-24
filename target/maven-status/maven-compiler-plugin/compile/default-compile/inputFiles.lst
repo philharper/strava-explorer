@@ -1,2 +1,5 @@
-/home/phil/git/strava-explorer/src/main/java/uk/co/philharper/WelcomeController.java
+/home/phil/git/strava-explorer/src/main/java/uk/co/philharper/facades/ActivityFacade.java
+/home/phil/git/strava-explorer/src/main/java/uk/co/philharper/services/ActivityService.java
+/home/phil/git/strava-explorer/src/main/java/uk/co/philharper/facades/impl/DefaultActivityFacade.java
+/home/phil/git/strava-explorer/src/main/java/uk/co/philharper/controllers/WelcomeController.java
 /home/phil/git/strava-explorer/src/main/java/uk/co/philharper/SpringBootWebApplication.java

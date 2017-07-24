@@ -1,21 +1,22 @@
-package uk.co.philharper;
+package uk.co.philharper.controllers;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import uk.co.philharper.facades.ActivityFacade;
+
 @Controller
 public class WelcomeController {
-
-	// inject via application.properties
-	@Value("${welcome.message:test}")
-	private String message = "Hello World";
+	
+	@Autowired
+	ActivityFacade defaultActivityFacade;
 
 	@RequestMapping("/")
 	public String welcome(Map<String, Object> model) {
-		model.put("message", this.message);
+		model.put("message", defaultActivityFacade.getActivity());
 		return "index";
 	}
 
