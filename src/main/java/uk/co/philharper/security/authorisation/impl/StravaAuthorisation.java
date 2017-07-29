@@ -14,8 +14,10 @@ import uk.co.philharper.entities.AuthorisationResponse;
 import uk.co.philharper.security.authorisation.Authorisation;
 
 @Component
-public class StravaAuthorisation implements Authorisation {
+public class StravaAuthorisation implements Authorisation {	
 
+	RestTemplate restTemplate = new RestTemplate();
+	
 	@Value("${strava.client.id}")
 	public String clientId;
 
@@ -27,7 +29,6 @@ public class StravaAuthorisation implements Authorisation {
 
 	@Override
 	public void authoriseApplication(String code) {
-		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
