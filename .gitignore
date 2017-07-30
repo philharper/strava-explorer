@@ -3,3 +3,4 @@ target/*
 src/main/resources/secure.application.properties
 bin/*
 .classpath
+.settings/*
