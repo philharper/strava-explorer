@@ -13,13 +13,17 @@
       
       <bean id="defaultActivityFacade" class="uk.co.philharper.facades.impl.DefaultActivityFacade" />
       <bean id="defaultActivityService" class="uk.co.philharper.services.impl.DefaultActivityService" />
-      <bean id="restActivityDao" class="uk.co.philharper.dao.impl.RestActivityDao" />
+      <bean id="restActivityDao" class="uk.co.philharper.dao.impl.RestActivityDAO" />
       
       <!-- Authorisation -->
       
       <bean id="defaultAuthorisationFacade" class="uk.co.philharper.facades.impl.DefaultAuthorisationFacade" />
       <bean id="defaultAuthorisationService" class="uk.co.philharper.services.impl.DefaultAuthorisationService" />
       <bean id="stravaAuthorisation" class="uk.co.philharper.security.authorisation.impl.StravaAuthorisation" />
+      
+      <!-- Segment -->
+      
+      <bean id="restSegmentDao" class="uk.co.philharper.dao.impl.RestSegmentDAO" />
 
  
 </beans>

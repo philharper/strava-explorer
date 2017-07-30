@@ -8,11 +8,10 @@
 	</head>
 	<body>
 	
-	<h1 style="margin: 40px;">Welcome ${athlete.firstname}</h1>
-	<img style="float: right; margin: 40px;" src="${athlete.profile}"/>
+	<h1>${activity.name}</h1>
 	
-	<c:forEach items="${activities}" var="activity">
-		<a href="/activity/${activity.id}">${activity.name}</a><br/>
+	<c:forEach items="${activity.segment_efforts}" var="segment">
+		<p>${segment.name}</p>
 	</c:forEach>
 	
 	</body>

@@ -1,0 +1,4 @@
+build/*
+target/*
+src/main/resources/secure.application.properties
+>>>>>>> c2689464b35978887fe51e030d9a7c7c43c3d9eb

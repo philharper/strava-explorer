@@ -1,7 +1,9 @@
 package uk.co.philharper.security.authorisation;
 
+import uk.co.philharper.entities.Athlete;
+
 public interface Authorisation {
 	
-	public void authoriseApplication(String code);
+	public Athlete authoriseApplication(String code);
 
 }

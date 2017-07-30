@@ -1,6 +1,7 @@
 package uk.co.philharper.security.authorisation.impl;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -25,7 +28,6 @@ public class StravaAuthorisationTest {
 	@InjectMocks
 	StravaAuthorisation stravaAuthorisation;
 
-
 	@Test
 	public void authoriseApplicationCallsAuthEndPoint() {	
 		HttpHeaders headers = new HttpHeaders();
@@ -41,6 +43,9 @@ public class StravaAuthorisationTest {
 		map.add("code", "12345");
 		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+		
+		ResponseEntity<AuthorisationResponse> authorisationResponseEntity = new ResponseEntity<AuthorisationResponse>(new AuthorisationResponse(), HttpStatus.OK);
+		when(mockRestTemplate.postForEntity("https://www.strava.com/oauth/tokens", request, AuthorisationResponse.class)).thenReturn(authorisationResponseEntity);
 		
 		stravaAuthorisation.authoriseApplication("12345");
 		verify(mockRestTemplate).postForEntity("https://www.strava.com/oauth/tokens", request, AuthorisationResponse.class);

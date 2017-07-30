@@ -3,6 +3,7 @@ package uk.co.philharper.facades.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import uk.co.philharper.entities.Athlete;
 import uk.co.philharper.facades.AuthorisationFacade;
 import uk.co.philharper.services.AuthorisationService;
 
@@ -13,8 +14,8 @@ public class DefaultAuthorisationFacade implements AuthorisationFacade {
 	AuthorisationService authorisationService;
 
 	@Override
-	public void authoriseApplication(String code) {
-		authorisationService.authoriseApplication(code);
+	public Athlete authoriseApplication(String code) {
+		return authorisationService.authoriseApplication(code);
 	}
 
 }

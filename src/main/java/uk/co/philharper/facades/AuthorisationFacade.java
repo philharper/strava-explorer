@@ -1,7 +1,9 @@
 package uk.co.philharper.facades;
 
+import uk.co.philharper.entities.Athlete;
+
 public interface AuthorisationFacade {
 
-	public void authoriseApplication(String code);
+	public Athlete authoriseApplication(String code);
 	
 }
