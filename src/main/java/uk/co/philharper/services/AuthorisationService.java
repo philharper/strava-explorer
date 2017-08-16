@@ -1,9 +1,9 @@
 package uk.co.philharper.services;
 
-import uk.co.philharper.entities.Athlete;
+import uk.co.philharper.entities.AuthorisationResponse;
 
 public interface AuthorisationService {
 
-	public Athlete authoriseApplication(String code);
+	public AuthorisationResponse authoriseApplication(String code);
 	
 }

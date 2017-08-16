@@ -39,7 +39,6 @@ public class RestActivityDAOTest {
 	public void before() {
 		restActivityDao.activitiesUrl = "activitiesUrl";
 		restActivityDao.activityUrl = "activityUrl";
-		restActivityDao.bearerToken = "bearerToken";
 		
 		HttpHeaders headers =  new HttpHeaders();
 		headers.add("Authorization", "Bearer bearerToken");

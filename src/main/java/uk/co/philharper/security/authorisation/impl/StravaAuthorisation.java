@@ -10,7 +10,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import uk.co.philharper.entities.Athlete;
 import uk.co.philharper.entities.AuthorisationResponse;
 import uk.co.philharper.security.authorisation.Authorisation;
 
@@ -29,7 +28,7 @@ public class StravaAuthorisation implements Authorisation {
 	public String stravaOauthUrl; 
 
 	@Override
-	public Athlete authoriseApplication(String code) {
+	public AuthorisationResponse authoriseApplication(String code) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
@@ -42,7 +41,7 @@ public class StravaAuthorisation implements Authorisation {
 
 		ResponseEntity<AuthorisationResponse> authorisation = restTemplate.postForEntity(stravaOauthUrl, request,
 				AuthorisationResponse.class);
-		return authorisation.getBody().getAthlete();
+		return authorisation.getBody();
 	}
 
 }

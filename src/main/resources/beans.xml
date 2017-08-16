@@ -8,7 +8,7 @@
       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-      
+           
       <!-- Activity -->
       
       <bean id="defaultActivityFacade" class="uk.co.philharper.facades.impl.DefaultActivityFacade" />
@@ -24,6 +24,11 @@
       <!-- Segment -->
       
       <bean id="restSegmentDao" class="uk.co.philharper.dao.impl.RestSegmentDAO" />
-
+      
+      <!-- User -->
+      
+      <bean id="defaultUserFacade" class="uk.co.philharper.facades.impl.DefaultUserFacade" />
+      <bean id="defaultUserService" class="uk.co.philharper.services.impl.DefaultUserService" />
+      <bean id="MySqlUserDao" class="uk.co.philharper.dao.impl.MySqlUserDAO" />
  
 </beans>

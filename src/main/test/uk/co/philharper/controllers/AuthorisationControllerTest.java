@@ -20,7 +20,7 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import uk.co.philharper.entities.Activity;
-import uk.co.philharper.entities.Athlete;
+import uk.co.philharper.entities.AuthorisationResponse;
 import uk.co.philharper.facades.ActivityFacade;
 import uk.co.philharper.facades.AuthorisationFacade;
 
@@ -38,8 +38,9 @@ public class AuthorisationControllerTest {
 	
 	@Before
 	public void before() {
-		Athlete athlete = new Athlete();
-		when(mockDefaultAuthorisationFacade.authoriseApplication("1234")).thenReturn(athlete);
+		AuthorisationResponse authorisationResponse = new AuthorisationResponse();
+		authorisationResponse.setAccess_token("1234");
+		when(mockDefaultAuthorisationFacade.authoriseApplication("98765")).thenReturn(authorisationResponse);
 		Activity activity = new Activity();
 		activity.setId(1);
 		List<Activity> activities = new ArrayList<Activity>();

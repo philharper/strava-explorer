@@ -1,9 +1,9 @@
 package uk.co.philharper.facades;
 
-import uk.co.philharper.entities.Athlete;
+import uk.co.philharper.entities.AuthorisationResponse;
 
 public interface AuthorisationFacade {
 
-	public Athlete authoriseApplication(String code);
+	public AuthorisationResponse authoriseApplication(String code);
 	
 }

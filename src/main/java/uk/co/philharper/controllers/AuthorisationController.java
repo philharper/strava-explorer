@@ -1,7 +1,5 @@
 package uk.co.philharper.controllers;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import uk.co.philharper.entities.Activity;
-import uk.co.philharper.entities.Athlete;
+import uk.co.philharper.entities.AuthorisationResponse;
 import uk.co.philharper.facades.ActivityFacade;
 import uk.co.philharper.facades.AuthorisationFacade;
-
+import uk.co.philharper.facades.UserFacade;
 
 @Controller
 public class AuthorisationController {
@@ -27,6 +24,9 @@ public class AuthorisationController {
 	
 	@Autowired
 	ActivityFacade defaultActivityFacade;
+	
+	@Autowired
+	UserFacade defaultUserFacade;
 
 	@RequestMapping("/")
 	public String initialAuthorisation(Map<String, Object> model) {
@@ -35,10 +35,9 @@ public class AuthorisationController {
 	
 	@RequestMapping("/authorised")
 	public String authorised(Map<String, Object> model, @RequestParam(value = "code") String code) {
-		Athlete athlete = defaultAuthorisationFacade.authoriseApplication(code);
-		List<Activity> activities = defaultActivityFacade.getActivities(new Date(), 50);
-		model.put("athlete", athlete);
-		model.put("activities", activities);
+		AuthorisationResponse authResponse = defaultAuthorisationFacade.authoriseApplication(code);
+		model.put("bearerToken", authResponse.getAccess_token());
+		model.put("userName", defaultUserFacade.getUser(1).getBearerToken());
 		return "index";
 	}
 
