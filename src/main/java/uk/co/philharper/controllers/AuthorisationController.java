@@ -1,5 +1,6 @@
 package uk.co.philharper.controllers;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,8 @@ public class AuthorisationController {
 	public String authorised(Map<String, Object> model, @RequestParam(value = "code") String code) {
 		AuthorisationResponse authResponse = defaultAuthorisationFacade.authoriseApplication(code);
 		model.put("bearerToken", authResponse.getAccess_token());
-		model.put("userName", defaultUserFacade.getUser(1).getBearerToken());
+		model.put("userName", defaultUserFacade.getUser(1).getUserName());
+		model.put("activities", defaultActivityFacade.getActivities(new Date(), 100, 1));
 		return "index";
 	}
 

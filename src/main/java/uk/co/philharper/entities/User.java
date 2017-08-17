@@ -20,6 +20,9 @@ public class User {
 	
 	@Column(name="bearer")
 	private String bearer;
+	
+	@Column(name="stravaid", unique = true)
+	private int stravaid;
 
 	public long getId() {
 		return id;
@@ -43,6 +46,14 @@ public class User {
 
 	public void setBearerToken(String bearerToken) {
 		this.bearer = bearerToken;
+	}
+	
+	public int getStravaId() {
+		return stravaid;
+	}
+
+	public void setStravaId(int stravaId) {
+		this.stravaid = stravaId;
 	}
 
 }

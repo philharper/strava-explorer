@@ -41,6 +41,7 @@ public class StravaAuthorisation implements Authorisation {
 
 		ResponseEntity<AuthorisationResponse> authorisation = restTemplate.postForEntity(stravaOauthUrl, request,
 				AuthorisationResponse.class);
+		
 		return authorisation.getBody();
 	}
 

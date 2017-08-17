@@ -3,6 +3,7 @@ package uk.co.philharper.dao.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -37,11 +38,9 @@ public class RestActivityDAO implements ActivityDAO {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + bearerToken);
-		ResponseEntity<Object> activityListResponse = restTemplate.exchange(createUrl(beforeDate, pageSize),
-				HttpMethod.GET, new HttpEntity<Object>(headers), Object.class);
-		List<Activity> aL = (List<Activity>) activityListResponse.getBody();
-
-		return aL;
+		ResponseEntity<List<Activity>> activityListResponse = restTemplate.exchange(createUrl(beforeDate, pageSize),
+				HttpMethod.GET, new HttpEntity<Object>(headers), new ParameterizedTypeReference<List<Activity>>() {});
+		return activityListResponse.getBody();
 	}
 
 	private String createUrl(long beforeDate, int pageSize) {

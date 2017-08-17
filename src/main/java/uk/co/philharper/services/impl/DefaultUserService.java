@@ -9,13 +9,22 @@ import uk.co.philharper.services.UserService;
 
 @Component
 public class DefaultUserService implements UserService {
-	
+
 	@Autowired
-	MySqlUserDAO MySqlUserDao;
+	MySqlUserDAO mySqlUserDao;
 
 	@Override
 	public User getUser(int userId) {
-		return MySqlUserDao.findOne(Long.valueOf(userId));
+		return mySqlUserDao.findOne(Long.valueOf(userId));
+	}
+
+	@Override
+	public void saveUser(User user) {
+		try {
+			mySqlUserDao.save(user);
+		} catch (Exception e) {
+			
+		}
 	}
 
 }

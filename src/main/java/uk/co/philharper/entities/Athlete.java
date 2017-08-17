@@ -7,7 +7,7 @@ import java.util.Map;
 public class Athlete {
 
     private Integer id;
-    private Object username;
+    private String username;
     private Integer resource_state;
     private String firstname;
     private String lastname;
@@ -34,11 +34,11 @@ public class Athlete {
         this.id = id;
     }
 
-    public Object getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Object username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

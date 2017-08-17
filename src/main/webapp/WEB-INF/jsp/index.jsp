@@ -10,6 +10,9 @@
 	
 	<h1 style="margin: 40px;">Welcome ${userName}</h1>
 	
+	<c:forEach items="${activities}" var="activity">
+		<a href="/activity/${activity.athlete.id}/${activity.id}">${activity.name}</a><br/>
+	</c:forEach>
 	
 	</body>
 </html>

@@ -11,7 +11,7 @@
 	<h1>${activity.name}</h1>
 	
 	<c:forEach items="${activity.segment_efforts}" var="segment">
-		<p>${segment.name}</p>
+		<p>${segment.name} | ${segment.elapsed_time}</p>
 	</c:forEach>
 	
 	</body>

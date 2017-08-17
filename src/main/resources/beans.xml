@@ -23,6 +23,7 @@
       
       <!-- Segment -->
       
+      <bean id="defaultSegmentFacade" class="uk.co.philharper.facades.impl.DefaultSegmentFacade" />
       <bean id="restSegmentDao" class="uk.co.philharper.dao.impl.RestSegmentDAO" />
       
       <!-- User -->
