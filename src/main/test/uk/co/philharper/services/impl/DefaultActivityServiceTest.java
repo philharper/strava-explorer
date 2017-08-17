@@ -34,24 +34,24 @@ public class DefaultActivityServiceTest {
 	@Before
 	public void before() {
 		activitiesListResponse = new ArrayList<Activity>();
-		when(mockActivityDao.getActivities(654987321, 5)).thenReturn(activitiesListResponse);
+		when(mockActivityDao.getActivities(654987321, 5, "12fg")).thenReturn(activitiesListResponse);
 	}
 
 	@Test
 	public void getActivityCallsGetActivityOnActivityDao() {
-		defaultActivityService.getActivity("123");
-		verify(mockActivityDao).getActivity("123");
+		defaultActivityService.getActivity("123", "12fg");
+		verify(mockActivityDao).getActivity("123", "12fg");
 	}
 	
 	@Test
 	public void getActivitiesCallsDaoWithEpochDate() {
-		defaultActivityService.getActivities(new Date(654987321), 5);
-		verify(mockActivityDao).getActivities(654987321, 5);
+		defaultActivityService.getActivities(new Date(654987321), 5, "12fg");
+		verify(mockActivityDao).getActivities(654987321, 5, "12fg");
 	}
 	
 	@Test
 	public void getActivitiesReturnsListOfActivities() {		
-		List<Activity> activities = defaultActivityService.getActivities(new Date(654987321), 5);
+		List<Activity> activities = defaultActivityService.getActivities(new Date(654987321), 5, "12fg");
 		assertThat(activitiesListResponse, is(equalTo(activities)));		
 	}
 	

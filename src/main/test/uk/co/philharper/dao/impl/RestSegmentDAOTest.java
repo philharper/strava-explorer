@@ -35,10 +35,9 @@ public class RestSegmentDAOTest {
 	@Before
 	public void before() {
 		restSegmentDAO.segmentUrl = "testUrl";
-		restSegmentDAO.bearerToken = "bearerToken";
 		
 		HttpHeaders headers =  new HttpHeaders();
-		headers.add("Authorization", "Bearer bearerToken");
+		headers.add("Authorization", "Bearer fg45");
 		httpEntity = new HttpEntity<Object>(headers);
 
 		Segment segment = new Segment();
@@ -49,13 +48,13 @@ public class RestSegmentDAOTest {
 
 	@Test
 	public void getSegmentCallsRestTemplateWithUrlAndBearerToken() {		
-		restSegmentDAO.getSegment("123456");
+		restSegmentDAO.getSegment("123456", "fg45");
 		verify(mockRestTemplate).exchange("testUrl", HttpMethod.GET, httpEntity, Segment.class);
 	}
 
 	@Test
 	public void getSegmentReturnSegmentFromRestCall() {
-		Segment segmentResponse = restSegmentDAO.getSegment("123456");
+		Segment segmentResponse = restSegmentDAO.getSegment("123456", "fg45");
 		assertThat(segmentResponse.getActivity_type(), is(equalTo("activityType")));
 	}
 

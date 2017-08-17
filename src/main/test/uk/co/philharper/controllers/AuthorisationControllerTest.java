@@ -51,7 +51,7 @@ public class AuthorisationControllerTest {
 		activity.setId(1);
 		List<Activity> activities = new ArrayList<Activity>();
 		activities.add(activity);
-		when(mockDefaultDefaultActivityFacade.getActivities(new Date(1), 2)).thenReturn(activities);
+		when(mockDefaultDefaultActivityFacade.getActivities(new Date(1), 2, 3)).thenReturn(activities);
 		User user = new User();
 		user.setBearerToken("28q37s4h63");
 		when(mockDefaultUserFacade.getUser(1)).thenReturn(user);

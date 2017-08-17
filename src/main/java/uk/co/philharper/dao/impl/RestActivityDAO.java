@@ -25,18 +25,18 @@ public class RestActivityDAO implements ActivityDAO {
 	RestTemplate restTemplate = new RestTemplate();
 
 	@Override
-	public Activity getActivity(String activityId) {
+	public Activity getActivity(String activityId, String bearerToken) {
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "Bearer " + "bearerToken");
+		headers.add("Authorization", "Bearer " + bearerToken);
 		return restTemplate.exchange(activityUrl + "/" + activityId,
 				HttpMethod.GET, new HttpEntity<Activity>(headers), Activity.class).getBody();
 	}
 
 	@Override
-	public List<Activity> getActivities(long beforeDate, int pageSize) {
+	public List<Activity> getActivities(long beforeDate, int pageSize, String bearerToken) {
 
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "Bearer " + "bearerToken");
+		headers.add("Authorization", "Bearer " + bearerToken);
 		ResponseEntity<Object> activityListResponse = restTemplate.exchange(createUrl(beforeDate, pageSize),
 				HttpMethod.GET, new HttpEntity<Object>(headers), Object.class);
 		List<Activity> aL = (List<Activity>) activityListResponse.getBody();

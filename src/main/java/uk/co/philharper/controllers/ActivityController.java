@@ -15,9 +15,9 @@ public class ActivityController {
 	@Autowired
 	ActivityFacade defaultActivityFacade;
 	
-	@RequestMapping("/activity/{activityId}")
-	public String activity(Map<String, Object> model, @PathVariable(value = "activityId") String activityId) {
-		model.put("activity", defaultActivityFacade.getActivity(activityId));
+	@RequestMapping("/activity/{user}/{activityId}")
+	public String activity(Map<String, Object> model, @PathVariable(value = "userId") int userId, @PathVariable(value = "activityId") String activityId) {
+		model.put("activity", defaultActivityFacade.getActivity(activityId, userId));
 		return "activity";
 	}
 }

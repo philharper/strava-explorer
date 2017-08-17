@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import uk.co.philharper.entities.Activity;
 import uk.co.philharper.facades.ActivityFacade;
 import uk.co.philharper.services.ActivityService;
+import uk.co.philharper.services.UserService;
 
 @Component
 public class DefaultActivityFacade implements ActivityFacade {
@@ -16,13 +17,16 @@ public class DefaultActivityFacade implements ActivityFacade {
 	@Autowired
 	ActivityService defaultActivityService;
 	
-	public Activity getActivity(String activityId) {
-		return defaultActivityService.getActivity(activityId);
+	@Autowired
+	UserService defaultUserService;
+	
+	public Activity getActivity(String activityId, int userId) {
+		return defaultActivityService.getActivity(activityId, defaultUserService.getUser(userId).getBearerToken());
 	}
 
 	@Override
-	public List<Activity> getActivities(Date beforeDate, int pageSize) {
-		return defaultActivityService.getActivities(beforeDate, pageSize);
+	public List<Activity> getActivities(Date beforeDate, int pageSize, int userId) {
+		return defaultActivityService.getActivities(beforeDate, pageSize, defaultUserService.getUser(userId).getBearerToken());
 	}
 
 }

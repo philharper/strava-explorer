@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import uk.co.philharper.dao.ActivityDAO;
+import uk.co.philharper.dao.impl.MySqlUserDAO;
 import uk.co.philharper.entities.Activity;
 import uk.co.philharper.services.ActivityService;
 
@@ -16,14 +17,17 @@ public class DefaultActivityService implements ActivityService {
 	@Autowired
 	ActivityDAO restActivityDao;
 	
+	@Autowired
+	MySqlUserDAO mySqlUserDao;
+	
 	@Override
-	public Activity getActivity(String activityId) {
-		return restActivityDao.getActivity(activityId);
+	public Activity getActivity(String activityId, String bearerToken) {
+		return restActivityDao.getActivity(activityId, bearerToken);
 	}
 
 	@Override
-	public List<Activity> getActivities(Date beforeDate, int pageSize) {
-		return restActivityDao.getActivities(beforeDate.getTime(), pageSize);
+	public List<Activity> getActivities(Date beforeDate, int pageSize, String bearerToken) {
+		return restActivityDao.getActivities(beforeDate.getTime(), pageSize, bearerToken);
 	}
 
 }

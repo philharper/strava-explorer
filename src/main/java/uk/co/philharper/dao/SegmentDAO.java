@@ -4,6 +4,6 @@ import uk.co.philharper.entities.Segment;
 
 public interface SegmentDAO {
 
-	public Segment getSegment(String segmentId);
+	public Segment getSegment(String segmentId, String bearerToken);
 	
 }

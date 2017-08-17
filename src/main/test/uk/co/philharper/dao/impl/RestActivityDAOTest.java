@@ -41,7 +41,7 @@ public class RestActivityDAOTest {
 		restActivityDao.activityUrl = "activityUrl";
 		
 		HttpHeaders headers =  new HttpHeaders();
-		headers.add("Authorization", "Bearer bearerToken");
+		headers.add("Authorization", "Bearer fg45");
 		httpEntity = new HttpEntity<Object>(headers);
 
 		List<Activity> activities = new ArrayList<Activity>();
@@ -58,25 +58,25 @@ public class RestActivityDAOTest {
 	
 	@Test
 	public void getActivityCallsRestTemplateWithUrlAndBearerToken() {		
-		restActivityDao.getActivity("1");
+		restActivityDao.getActivity("1", "fg45");
 		verify(mockRestTemplate).exchange("activityUrl/1", HttpMethod.GET, httpEntity, Activity.class);
 	}
 
 	@Test
 	public void getActivityReturnActivityFromRestCall() {
-		Activity activityResponse = restActivityDao.getActivity("1");
+		Activity activityResponse = restActivityDao.getActivity("1", "fg45");
 		assertThat(activityResponse.getId(), is(equalTo(123)));
 	}
 	
 	@Test
 	public void getActivitiesCallsRestTemplateWithUrlAndBearerToken() {		
-		restActivityDao.getActivities(1, 2);
+		restActivityDao.getActivities(1, 2, "fg45");
 		verify(mockRestTemplate).exchange("activitiesUrl?before=1&per_page=2", HttpMethod.GET, httpEntity, Object.class);
 	}
 
 	@Test
 	public void getActivitiesReturnSegmentFromRestCall() {
-		List<Activity> activityListResponse = restActivityDao.getActivities(1, 2);
+		List<Activity> activityListResponse = restActivityDao.getActivities(1, 2, "fg45");
 		assertThat(activityListResponse.get(0).getId(), is(equalTo(123)));
 	}
 

@@ -15,12 +15,10 @@ public class RestSegmentDAO implements SegmentDAO {
 	@Value("${strava.segment.url}")
 	public String segmentUrl;
 
-	public String bearerToken = "54a25cd042e97b4d67e2e0f6e6e09ca150ef4262";
-
 	RestTemplate restTemplate = new RestTemplate();
 
 	@Override
-	public Segment getSegment(String segmentId) {
+	public Segment getSegment(String segmentId, String bearerToken) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + bearerToken);
 		ResponseEntity<Segment> segmentResponse = restTemplate.exchange(segmentUrl, HttpMethod.GET,
