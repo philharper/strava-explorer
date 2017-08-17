@@ -17,12 +17,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import uk.co.philharper.entities.Activity;
 import uk.co.philharper.entities.AuthorisationResponse;
+import uk.co.philharper.entities.User;
 import uk.co.philharper.facades.ActivityFacade;
 import uk.co.philharper.facades.AuthorisationFacade;
+import uk.co.philharper.facades.UserFacade;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AuthorisationControllerTest {
@@ -32,6 +35,9 @@ public class AuthorisationControllerTest {
 	
 	@Mock
 	ActivityFacade mockDefaultDefaultActivityFacade;
+	
+	@Mock
+	UserFacade mockDefaultUserFacade;
 	
 	@InjectMocks
 	AuthorisationController authorisationController;
@@ -46,6 +52,9 @@ public class AuthorisationControllerTest {
 		List<Activity> activities = new ArrayList<Activity>();
 		activities.add(activity);
 		when(mockDefaultDefaultActivityFacade.getActivities(new Date(1), 2)).thenReturn(activities);
+		User user = new User();
+		user.setBearerToken("28q37s4h63");
+		when(mockDefaultUserFacade.getUser(1)).thenReturn(user);
 	}
 	
 	@Test
